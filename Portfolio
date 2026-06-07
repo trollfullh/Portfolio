@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Student Portfolio</title>
+<title>Student Portfolio - Phạm Kiên</title>
 
 <style>
 
@@ -12,26 +11,22 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Segoe UI,sans-serif;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:#f5f5f5;
-padding:30px;
-}
-
-.container{
-max-width:1400px;
-margin:auto;
+background:#f4f4f4;
 }
 
 .header{
-margin-bottom:20px;
+padding:40px;
+background:white;
+border-bottom:2px solid #eee;
 }
 
 .logo{
-font-size:48px;
-color:#9b6bc4;
+font-size:60px;
+color:#8e6bbd;
 }
 
 .title{
@@ -40,75 +35,81 @@ font-weight:bold;
 margin-top:10px;
 }
 
-.main{
+.container{
 display:grid;
 grid-template-columns:320px 1fr;
 gap:25px;
+padding:25px;
 }
 
 .sidebar{
 background:white;
 padding:20px;
-border-radius:10px;
+border-radius:12px;
+height:fit-content;
 }
 
 .sidebar h3{
+color:#8e6bbd;
 margin-bottom:20px;
-color:#8d68b2;
 }
 
 .menu-item{
 padding:12px;
-cursor:pointer;
 border-radius:8px;
+cursor:pointer;
 margin-bottom:8px;
-transition:0.3s;
+transition:.3s;
 }
 
 .menu-item:hover{
-background:#f0e8f7;
-}
-
-.content{
-display:flex;
-flex-direction:column;
-gap:20px;
+background:#f1e8fb;
 }
 
 .about{
-background:#f3edf8;
+background:#f4edf9;
 padding:20px;
-border-radius:10px;
+border-radius:12px;
+margin-bottom:20px;
 }
 
 .about h2{
-color:#8d68b2;
+color:#8e6bbd;
 margin-bottom:15px;
 }
 
 .info{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:20px;
+gap:15px;
+margin-bottom:20px;
 }
 
 .card{
 background:white;
 padding:20px;
-border-radius:10px;
+border-radius:12px;
 border:1px solid #ddd;
 }
 
 .card-title{
 font-weight:bold;
-color:#8d68b2;
+color:#8e6bbd;
 margin-bottom:10px;
 }
 
+.section{
+display:none;
+}
+
+.section.active{
+display:block;
+}
+
 .section-title{
-font-size:24px;
-font-weight:bold;
-margin:15px 0;
+font-size:28px;
+margin-bottom:20px;
+color:#444;
 }
 
 .gallery{
@@ -119,31 +120,54 @@ gap:20px;
 
 .gallery img{
 width:100%;
-height:300px;
+height:280px;
 object-fit:cover;
-border-radius:10px;
-border:1px solid #ddd;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
 }
 
-.video-box{
-width:100%;
-aspect-ratio:16/9;
+.gallery img:hover{
+transform:scale(1.03);
 }
 
 .video-box iframe{
 width:100%;
-height:100%;
+height:550px;
 border:none;
-border-radius:10px;
+border-radius:12px;
 }
 
-.hidden{
+.modal{
 display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.9);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.modal img{
+max-width:90%;
+max-height:90%;
+}
+
+.close{
+position:absolute;
+top:20px;
+right:30px;
+font-size:40px;
+color:white;
+cursor:pointer;
 }
 
 @media(max-width:900px){
 
-.main{
+.container{
 grid-template-columns:1fr;
 }
 
@@ -155,14 +179,16 @@ grid-template-columns:1fr;
 grid-template-columns:1fr;
 }
 
+.video-box iframe{
+height:300px;
+}
+
 }
 
 </style>
 </head>
 
 <body>
-
-<div class="container">
 
 <div class="header">
 
@@ -174,45 +200,45 @@ Student Portfolio
 
 </div>
 
-<div class="main">
+<div class="container">
 
 <div class="sidebar">
 
 <h3>Tên các bài học</h3>
 
-<div class="menu-item" onclick="showSection('bai1')">
-Bài 1: Thao tác cơ bản với tệp tin và thư mục
+<div class="menu-item" onclick="showSection('b1')">
+📁 Bài 1: Thao tác cơ bản với tệp tin và thư mục
 </div>
 
-<div class="menu-item" onclick="showSection('bai2')">
-Bài 2: Tìm kiếm và đánh giá thông tin học thuật
+<div class="menu-item" onclick="showSection('b2')">
+🔍 Bài 2: Tìm kiếm và đánh giá thông tin học thuật
 </div>
 
-<div class="menu-item" onclick="showSection('bai3')">
-Bài 3: Viết Prompt hiệu quả cho học tập
+<div class="menu-item" onclick="showSection('b3')">
+✍️ Bài 3: Viết Prompt hiệu quả cho học tập
 </div>
 
-<div class="menu-item" onclick="showSection('bai4')">
-Bài 4: Sử dụng công cụ trực tuyến cho dự án nhóm
+<div class="menu-item" onclick="showSection('b4')">
+👥 Bài 4: Sử dụng công cụ trực tuyến cho dự án nhóm
 </div>
 
-<div class="menu-item" onclick="showSection('bai5')">
-Bài 5: Sử dụng AI tạo sinh để hỗ trợ nội dung
+<div class="menu-item" onclick="showSection('b5')">
+🤖 Bài 5: Sử dụng AI tạo sinh để hỗ trợ nội dung
 </div>
 
-<div class="menu-item" onclick="showSection('bai6')">
-Bài 6: Sử dụng AI có trách nhiệm
+<div class="menu-item" onclick="showSection('b6')">
+🛡️ Bài 6: Sử dụng AI có trách nhiệm
 </div>
 
-<hr style="margin:20px 0">
+<hr style="margin:20px 0;">
 
 <div class="menu-item" onclick="showSection('video')">
-VIDEO AI
+🎬 VIDEO AI
 </div>
 
 </div>
 
-<div class="content">
+<div>
 
 <div class="about">
 
@@ -241,9 +267,7 @@ Trang portfolio này được AI hỗ trợ em tạo ra nhằm cho thấy tầm 
 <div class="card">
 <div class="card-title">Name</div>
 <div>Phạm Kiên</div>
-<div style="font-size:14px;color:gray;">
-MSV-25080344
-</div>
+<small>MSV-25080344</small>
 </div>
 
 <div class="card">
@@ -258,10 +282,8 @@ MSV-25080344
 
 </div>
 
-<div id="bai1" class="section">
-<h2 class="section-title">
-Bài 1: Thao tác cơ bản với tệp tin và thư mục
-</h2>
+<div id="b1" class="section active">
+<h2 class="section-title">Bài 1</h2>
 
 <div class="gallery">
 <img src="images/bai1-1.jpg">
@@ -271,10 +293,8 @@ Bài 1: Thao tác cơ bản với tệp tin và thư mục
 </div>
 </div>
 
-<div id="bai2" class="section hidden">
-<h2 class="section-title">
-Bài 2: Tìm kiếm và đánh giá thông tin học thuật
-</h2>
+<div id="b2" class="section">
+<h2 class="section-title">Bài 2</h2>
 
 <div class="gallery">
 <img src="images/bai2-1.jpg">
@@ -284,10 +304,8 @@ Bài 2: Tìm kiếm và đánh giá thông tin học thuật
 </div>
 </div>
 
-<div id="bai3" class="section hidden">
-<h2 class="section-title">
-Bài 3: Viết Prompt hiệu quả cho học tập
-</h2>
+<div id="b3" class="section">
+<h2 class="section-title">Bài 3</h2>
 
 <div class="gallery">
 <img src="images/bai3-1.jpg">
@@ -297,10 +315,8 @@ Bài 3: Viết Prompt hiệu quả cho học tập
 </div>
 </div>
 
-<div id="bai4" class="section hidden">
-<h2 class="section-title">
-Bài 4: Sử dụng công cụ trực tuyến cho dự án nhóm
-</h2>
+<div id="b4" class="section">
+<h2 class="section-title">Bài 4</h2>
 
 <div class="gallery">
 <img src="images/bai4-1.jpg">
@@ -310,10 +326,8 @@ Bài 4: Sử dụng công cụ trực tuyến cho dự án nhóm
 </div>
 </div>
 
-<div id="bai5" class="section hidden">
-<h2 class="section-title">
-Bài 5: Sử dụng AI tạo sinh để hỗ trợ nội dung
-</h2>
+<div id="b5" class="section">
+<h2 class="section-title">Bài 5</h2>
 
 <div class="gallery">
 <img src="images/bai5-1.jpg">
@@ -323,10 +337,8 @@ Bài 5: Sử dụng AI tạo sinh để hỗ trợ nội dung
 </div>
 </div>
 
-<div id="bai6" class="section hidden">
-<h2 class="section-title">
-Bài 6: Sử dụng AI có trách nhiệm
-</h2>
+<div id="b6" class="section">
+<h2 class="section-title">Bài 6</h2>
 
 <div class="gallery">
 <img src="images/bai6-1.jpg">
@@ -336,7 +348,7 @@ Bài 6: Sử dụng AI có trách nhiệm
 </div>
 </div>
 
-<div id="video" class="section hidden">
+<div id="video" class="section">
 
 <h2 class="section-title">
 VIDEO AI
@@ -357,6 +369,9 @@ allowfullscreen>
 
 </div>
 
+<div class="modal" id="modal">
+<span class="close" onclick="closeModal()">&times;</span>
+<img id="modalImg">
 </div>
 
 <script>
@@ -364,12 +379,33 @@ allowfullscreen>
 function showSection(id){
 
 document.querySelectorAll('.section')
-.forEach(section=>{
-section.classList.add('hidden');
+.forEach(sec=>{
+sec.classList.remove('active');
 });
 
 document.getElementById(id)
-.classList.remove('hidden');
+.classList.add('active');
+
+}
+
+const images=document.querySelectorAll('.gallery img');
+const modal=document.getElementById('modal');
+const modalImg=document.getElementById('modalImg');
+
+images.forEach(img=>{
+
+img.addEventListener('click',()=>{
+
+modal.style.display='flex';
+modalImg.src=img.src;
+
+});
+
+});
+
+function closeModal(){
+
+modal.style.display='none';
 
 }
 
